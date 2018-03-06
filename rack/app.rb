@@ -1,7 +1,7 @@
 require 'rack'
 class App
   def call(env)
-    status =200
+    status = 200
     headers = {'Content-Type' => "text/html"}
     body = []
     format_pattern = ""
@@ -36,7 +36,7 @@ class App
         format_pattern.chomp("-")
         time = Time.now
         time = time.strftime(format_pattern)
-        body << time
+        body << time << "\n"
       end
     end
     [ status, headers, body ]
