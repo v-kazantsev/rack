@@ -27,13 +27,13 @@ class App
       end
     end
     unless unknown_format.empty?
-      unknown_format.chomp(",")
+      unknown_format = unknown_format.chomp(",")
       status = 400
       format_pattern = ""
       body << "Unknown time format: [" << unknown_format << "]\n"
     else
-      if format_pattern.any?
-        format_pattern.chomp("-")
+      unless format_pattern.empty?
+        format_pattern = format_pattern.chomp("-")
         time = Time.now
         time = time.strftime(format_pattern)
         body << time << "\n"
